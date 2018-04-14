@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/create-group', function() {
+  return view('create_group');
+});
+
 Route::middleware('CasAuth')->group(function() {
   Route::get('/test', function () {
     return "Successfully authorized with Marist CAS";
