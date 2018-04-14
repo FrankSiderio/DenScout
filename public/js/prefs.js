@@ -46,6 +46,7 @@ function onSubPrefs(event) {
     const hidden = document.createElement('input');
     hidden.setAttribute('type', 'hidden');
     hidden.setAttribute('value', p.children[0].id);
+    hidden.setAttribute('name', p.id);
     form.appendChild(hidden);
   }
   form.submit();
