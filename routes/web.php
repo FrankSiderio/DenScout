@@ -11,6 +11,8 @@
 |
 */
 
+use App\Jobs\RequestMember;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -29,5 +31,5 @@ Route::get('/logout', function() {
 });
 
 Route::get('/email', function() {
-  return App\Models\Group::requestMember(20056533, 20047432);
+  dispatch(new RequestMember())->onQueue('emails');
 });
