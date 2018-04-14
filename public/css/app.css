@@ -27,6 +27,7 @@
 }
 
 .recommendations-search {
+  margin: 50px;
   display: flex;
 }
 
