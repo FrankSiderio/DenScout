@@ -27,6 +27,10 @@ Route::middleware('CasAuth')->group(function() {
   Route::middleware('Admin')->group(function() {
     Route::get('/admin', 'GroupController@index');
   });
+
+  Route::get('/preferences', function() {
+    return view('pick_preferences');
+  });
 });
 
 Route::post('/group', 'GroupController@create');
