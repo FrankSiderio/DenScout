@@ -48,4 +48,15 @@ class Group extends Model
     // Return the preferences
     return Preference::with('residence')->where('group_id', $groupId)->orderBy('rank', 'ASC')->get();
   }
+
+  /**
+   * Returns the leader of the group
+   * @return string
+   */
+  public static function getLeader($id) {
+    // Get the student leaders cwid
+    $cwid = StudentGroup::where('group_id', $id)->where('status', 'leader')->value('cwid');
+    // Return their name
+    return Student::getFirstName($cwid);
+  }
 }

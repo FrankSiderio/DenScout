@@ -4,7 +4,7 @@
 {{ $leader }} has requested you join their group.
 
 <div style="display:flex">
-  @component('mail::button', ['url' => ''])
+  @component('mail::button', ['url' => config('app.url') . '/join-group/' . $group . '/' . $member])
   Join
   @endcomponent
   @component('mail::button', ['url' => config('app.url') . '/decline/' . $group . '/' . $member, 'color' => 'red'])

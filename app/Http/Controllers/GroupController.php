@@ -80,20 +80,36 @@ class GroupController extends Controller
     return redirect('/');
   }
 
+  public function join($id, $cwid) {
+    Student::findOrFail($cwid);
+    Group::findOrFail($id);
+
+    return view('join_group', compact('id', 'cwid'));
+  }
+
   /**
    * Officially adds a member to a group
    * @param integer $id
    * @param integer $cwid
    */
-  public function addMember($id, $cwid) {
+  public function addMember($id, $cwid, Request $request) {
     $group = Group::findOrFail($id);
     $student = Student::findOrFail($cwid);
+
+    $name = explode(" ", $request->name);
+
+    $student->first_name = $name[0];
+    $student->last_name = $name[1] ?? '';
+    $student->grad_year = $grade ?? null;
+    $student->save();
 
     StudentGroup::where('cwid', $cwid)
                 ->where('group_id', $id)
                 ->update(['status' => 'member']);
 
-    return "success";
+    session()->flash('message', 'You have successfully joined!');
+
+    return redirect('/');
   }
 
   /**
