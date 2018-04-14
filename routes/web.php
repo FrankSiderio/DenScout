@@ -40,3 +40,6 @@ Route::get('/email', function() {
         ->delay(Carbon::now()->addSeconds(10));
   dispatch($job);
 });
+
+Route::get('/join/{id}/{cwid}', 'GroupController@addMember');
+Route::get('/decline/{id}/{cwid}', 'GroupController@declineMember');
