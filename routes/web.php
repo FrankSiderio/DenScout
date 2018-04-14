@@ -15,7 +15,11 @@ use App\Jobs\RequestMember;
 use Carbon\Carbon;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+Route::get('/create-group', function() {
+  return view('create_group');
 });
 
 Route::middleware('CasAuth')->group(function() {
