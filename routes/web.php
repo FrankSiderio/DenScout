@@ -10,30 +10,26 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 use App\Jobs\RequestMember;
 use Carbon\Carbon;
 
-Route::get('/', function () {
-    return view('index');
-});
-
 Route::middleware('CasAuth')->group(function() {
+  Route::get('/group/{id}', 'GroupController@show');
 
-  Route::get('/preferences', function() {
-    return view('pick_preferences');
+  Route::get('/', function () {
+      return view('index');
   });
 
   Route::get('/create-group', function() {
     return view('create_group');
   });
-  
-  Route::get('/group/{id}', 'GroupController@show');
 
   Route::middleware('Admin')->group(function() {
     Route::get('/admin', 'GroupController@index');
   });
 });
+
+Route::post('/group', 'GroupController@create');
 
 Route::get('/logout', function() {
   cas()->logout();
@@ -42,7 +38,7 @@ Route::get('/logout', function() {
 
 Route::get('/email', function() {
   $job = (new RequestMember(20056533, 20097232))
-        ->delay(Carbon::now()->addSeconds(10));
+        ->delay(Carbon::now()->addSeconds(2));
   dispatch($job);
 });
 
