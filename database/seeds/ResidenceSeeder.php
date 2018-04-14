@@ -17,6 +17,7 @@ class ResidenceSeeder extends Seeder
       $residence = ResidenceArea::create([
         'name' => 'Midrise Hall',
         'capacity' => 339,
+        'image_url' => 'http://www.marist.edu/housing/images/MR%20Outside%20Mini.jpg',
       ]);
 
       ResidenceGrade::create([
@@ -31,6 +32,7 @@ class ResidenceSeeder extends Seeder
       $residence = ResidenceArea::create([
         'name' => 'Foy Townhouses',
         'capacity' => 216,
+        'image_url' => 'http://www.marist.edu/housing/images/Foy%20Outside%20Mini.jpg',
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
@@ -40,6 +42,7 @@ class ResidenceSeeder extends Seeder
       $residence = ResidenceArea::create([
         'name' => 'New Townhouses',
         'capacity' => 136,
+        'image_url' => 'http://www.marist.edu/housing/images/TH%20Outside%20Mini.jpg',
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
@@ -49,6 +52,7 @@ class ResidenceSeeder extends Seeder
       $residence = ResidenceArea::create([
         'name' => 'Lower West Cedar St Townhouses',
         'capacity' => 224,
+        'image_url' => 'http://www.marist.edu/housing/images/WC%20Outside%20Mini.jpg',
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
@@ -57,6 +61,7 @@ class ResidenceSeeder extends Seeder
       $residence = ResidenceArea::create([
         'name' => 'Upper West Cedar St Townhouses',
         'capacity' => 224,
+        'image_url' => 'http://www.marist.edu/housing/images/WU%20Outside%20Mini.jpg',
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
@@ -68,6 +73,7 @@ class ResidenceSeeder extends Seeder
       $residence = ResidenceArea::create([
         'name' => 'Building A',
         'capacity' => 291,
+        'image_url' => 'http://www.marist.edu/housing/images/bldga_courtyard%20Small.jpg',
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
@@ -81,6 +87,7 @@ class ResidenceSeeder extends Seeder
       $residence = ResidenceArea::create([
         'name' => 'Building B',
         'capacity' => 172,
+        'image_url' => 'http://www.marist.edu/housing/images/Building%20B%20Outside%20Mini.jpg',
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
@@ -94,6 +101,7 @@ class ResidenceSeeder extends Seeder
       $residence = ResidenceArea::create([
         'name' => 'Building C',
         'capacity' => 167,
+        'image_url' => 'http://www.marist.edu/housing/images/Northend.jpg',
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
@@ -107,6 +115,7 @@ class ResidenceSeeder extends Seeder
       $residence = ResidenceArea::create([
         'name' => 'Building D',
         'capacity' => 156,
+        'image_url' => 'http://www.marist.edu/housing/images/Northend.jpg',
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
@@ -120,6 +129,7 @@ class ResidenceSeeder extends Seeder
       $residence = ResidenceArea::create([
         'name' => 'New Fulton Townhouses',
         'capacity' => 264,
+        'image_url' => 'http://www.marist.edu/housing/images/FL2%20Outside%20Mini.jpg',
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
@@ -133,6 +143,7 @@ class ResidenceSeeder extends Seeder
       $residence = ResidenceArea::create([
         'name' => 'Fulton Street Townhouses',
         'capacity' => 248,
+        'image_url' => 'http://www.marist.edu/housing/images/FL%20Outside%20Mini.jpg',
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
@@ -146,6 +157,7 @@ class ResidenceSeeder extends Seeder
       $residence = ResidenceArea::create([
         'name' => 'Talmadge Court',
         'capacity' => 100,
+        'image_url' => 'http://www.marist.edu/housing/images/talmadge_thumb.jpg',
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
