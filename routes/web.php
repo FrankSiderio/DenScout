@@ -12,6 +12,7 @@
 */
 
 use App\Jobs\RequestMember;
+use Carbon\Carbon;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,5 +32,7 @@ Route::get('/logout', function() {
 });
 
 Route::get('/email', function() {
-  dispatch(new RequestMember())->onQueue('emails');
+  $job = (new RequestMember(20056533, 20097232))
+        ->delay(Carbon::now()->addSeconds(10));
+  dispatch($job);
 });

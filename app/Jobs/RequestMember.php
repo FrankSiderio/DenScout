@@ -13,14 +13,18 @@ class RequestMember implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    protected $leaderCwid;
+    protected $memberCwid;
+
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($leaderCwid, $memberCwid)
     {
-        //
+      $this->leaderCwid = $leaderCwid;
+      $this->memberCwid = $memberCwid;
     }
 
     /**
@@ -30,6 +34,6 @@ class RequestMember implements ShouldQueue
      */
     public function handle()
     {
-      return Group::requestMember(20056533, 20047432);
+      return Group::requestMember($this->leaderCwid, $this->memberCwid);
     }
 }
