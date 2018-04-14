@@ -8,6 +8,7 @@ use App\Jobs\RequestMemberJob;
 use App\Models\Student;
 use App\Models\Group;
 use Carbon\Carbon;
+use Validator;
 
 class GroupController extends Controller
 {
@@ -33,10 +34,29 @@ class GroupController extends Controller
   }
 
   /**
+  * Validator for creating groups
+  * @param  array  $data
+  * @return Validator
+  */
+  protected function validator(array $data) {
+    return Validator::make($data, [
+        'name' => 'required|string|max:100',
+        'grade' => 'required'
+    ]);
+  }
+
+  /**
    * Creates a group
-   * @return
+   * @return redirect
    */
   public function create(Request $request) {
+    $validator = $this->validator($request->all());
+
+    if($validator->fails()) {
+      session()->flash('error', $validator->errors()->first());
+
+      return redirect('/create-group');
+    }
     $group = Group::create();
 
     $name = explode(" ", $request->name);
