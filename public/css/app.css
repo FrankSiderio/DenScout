@@ -1,3 +1,7 @@
+:root {
+  --ra-card-size: 150px;
+}
+
 .parent {
   display: grid;
   grid-template-columns: 1fr;
@@ -24,4 +28,48 @@
 .group-info {
   min-width: 300px;
   text-align: left;
+}
+
+.ra-drop {
+  width: var(--ra-card-size);
+  height: var(--ra-card-size);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prefs {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.pref {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ra-card {
+  width: var(--ra-card-size);
+  height: var(--ra-card-size);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ra-drop.occupied {
+  padding: 0;
+  color: black !important;
+  border: 0;
+}
+
+.ra {
+  min-height: 300px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
 }
