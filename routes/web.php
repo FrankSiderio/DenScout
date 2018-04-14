@@ -24,6 +24,8 @@ Route::middleware('CasAuth')->group(function() {
     return view('create_group');
   });
 
+  Route::get('/join-group/{id}/{cwid}', 'GroupController@join');
+
   Route::middleware('Admin')->group(function() {
     Route::get('/admin', 'GroupController@index');
   });
@@ -40,11 +42,5 @@ Route::get('/logout', function() {
   session()->flush();
 });
 
-Route::get('/email', function() {
-  $job = (new RequestMember(20056533, 20097232))
-        ->delay(Carbon::now()->addSeconds(2));
-  dispatch($job);
-});
-
-Route::get('/join/{id}/{cwid}', 'GroupController@addMember');
+Route::post('/join/{id}/{cwid}', 'GroupController@addMember');
 Route::get('/decline/{id}/{cwid}', 'GroupController@declineMember');

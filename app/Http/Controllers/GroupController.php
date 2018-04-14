@@ -8,6 +8,7 @@ use App\Jobs\RequestMemberJob;
 use App\Models\Student;
 use App\Models\Group;
 use Carbon\Carbon;
+use Validator;
 
 class GroupController extends Controller
 {
@@ -33,10 +34,29 @@ class GroupController extends Controller
   }
 
   /**
+  * Validator for creating groups
+  * @param  array  $data
+  * @return Validator
+  */
+  protected function validator(array $data) {
+    return Validator::make($data, [
+        'name' => 'required|string|max:100',
+        'grade' => 'required'
+    ]);
+  }
+
+  /**
    * Creates a group
-   * @return
+   * @return redirect
    */
   public function create(Request $request) {
+    $validator = $this->validator($request->all());
+
+    if($validator->fails()) {
+      session()->flash('error', $validator->errors()->first());
+
+      return redirect('/create-group');
+    }
     $group = Group::create();
 
     $name = explode(" ", $request->name);
@@ -68,7 +88,7 @@ class GroupController extends Controller
           'status' => 'pending',
         ]);
 
-        $job = (new RequestMemberJob(session('cwid'), $member))
+        $job = (new RequestMemberJob(session('cwid'), $member, $group->id))
               ->delay(Carbon::now()->addSeconds(5));
         dispatch($job);
       }
@@ -80,20 +100,36 @@ class GroupController extends Controller
     return redirect('/');
   }
 
+  public function join($id, $cwid) {
+    Student::findOrFail($cwid);
+    Group::findOrFail($id);
+
+    return view('join_group', compact('id', 'cwid'));
+  }
+
   /**
    * Officially adds a member to a group
    * @param integer $id
    * @param integer $cwid
    */
-  public function addMember($id, $cwid) {
+  public function addMember($id, $cwid, Request $request) {
     $group = Group::findOrFail($id);
     $student = Student::findOrFail($cwid);
+
+    $name = explode(" ", $request->name);
+
+    $student->first_name = $name[0];
+    $student->last_name = $name[1] ?? '';
+    $student->grad_year = $grade ?? null;
+    $student->save();
 
     StudentGroup::where('cwid', $cwid)
                 ->where('group_id', $id)
                 ->update(['status' => 'member']);
 
-    return "success";
+    session()->flash('message', 'You have successfully joined!');
+
+    return redirect('/');
   }
 
   /**
@@ -110,6 +146,8 @@ class GroupController extends Controller
                 ->where('group_id', $id)
                 ->update(['status' => 'declined']);
 
-    return "success";
+    session()->flash('message', 'The group request has been declined.');
+
+    return redirect('/');
   }
 }
