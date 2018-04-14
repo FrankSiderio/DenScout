@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class HousingAdmin extends Model
 {
-    //
+    public $primaryKey = "cwid";
 }

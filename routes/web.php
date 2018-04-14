@@ -16,12 +16,14 @@ Route::get('/', function () {
 });
 
 Route::middleware('CasAuth')->group(function() {
-  Route::get('/test', function () {
-    return "Successfully authorized with Marist CAS";
+  Route::get('/group/{id}', 'GroupController@show');
+
+  Route::middleware('Admin')->group(function() {
+    Route::get('/admin', 'GroupController@index');
   });
 });
 
-Route::get('/logout', function () {
+Route::get('/logout', function() {
   cas()->logout();
   session()->flush();
 });
