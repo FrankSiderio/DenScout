@@ -68,7 +68,7 @@ class GroupController extends Controller
           'status' => 'pending',
         ]);
 
-        $job = (new RequestMemberJob(session('cwid'), $member))
+        $job = (new RequestMemberJob(session('cwid'), $member, $group->id))
               ->delay(Carbon::now()->addSeconds(5));
         dispatch($job);
       }
@@ -110,6 +110,8 @@ class GroupController extends Controller
                 ->where('group_id', $id)
                 ->update(['status' => 'declined']);
 
-    return "success";
+    session()->flash('message', 'The group request has been declined.');
+
+    return redirect('/');
   }
 }

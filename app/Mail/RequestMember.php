@@ -12,15 +12,19 @@ class RequestMember extends Mailable
     use Queueable, SerializesModels;
 
     public $leader;
+    public $group;
+    public $member;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($leader)
+    public function __construct($leader, $group, $member)
     {
       $this->leader = $leader;
+      $this->group = $group;
+      $this->member = $member;
     }
 
     /**

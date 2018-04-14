@@ -17,16 +17,18 @@ class RequestMemberJob implements ShouldQueue
 
     protected $leaderCwid;
     protected $memberCwid;
+    protected $groupId;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($leaderCwid, $memberCwid)
+    public function __construct($leaderCwid, $memberCwid, $groupId)
     {
       $this->leaderCwid = $leaderCwid;
       $this->memberCwid = $memberCwid;
+      $this->groupId = $groupId;
     }
 
     /**
@@ -36,6 +38,6 @@ class RequestMemberJob implements ShouldQueue
      */
     public function handle()
     {
-      \Mail::to($this->memberCwid . "@marist.edu")->queue(new RequestMember(Student::getName($this->leaderCwid)));
+      \Mail::to($this->memberCwid . "@marist.edu")->queue(new RequestMember(Student::getName($this->leaderCwid), $this->groupId, $this->memberCwid));
     }
 }

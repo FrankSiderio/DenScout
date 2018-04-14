@@ -7,7 +7,7 @@
   @component('mail::button', ['url' => ''])
   Join
   @endcomponent
-  @component('mail::button', ['url' => '', 'color' => 'red'])
+  @component('mail::button', ['url' => config('app.url') . '/decline/' . $group . '/' . $member, 'color' => 'red'])
   Decline
   @endcomponent
 </div>

@@ -24,6 +24,10 @@ Route::middleware('CasAuth')->group(function() {
     return view('create_group');
   });
 
+  Route::get('/join-group', function() {
+    return view('join_group');
+  });
+
   Route::middleware('Admin')->group(function() {
     Route::get('/admin', 'GroupController@index');
   });
@@ -42,5 +46,5 @@ Route::get('/email', function() {
   dispatch($job);
 });
 
-Route::get('/join/{id}/{cwid}', 'GroupController@addMember');
+Route::post('/join/{id}/{cwid}', 'GroupController@addMember');
 Route::get('/decline/{id}/{cwid}', 'GroupController@declineMember');
