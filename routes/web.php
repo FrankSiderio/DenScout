@@ -19,17 +19,12 @@ Route::get('/', function () {
 });
 
 Route::middleware('CasAuth')->group(function() {
-
-  Route::get('/preferences', function() {
-    return view('pick_preferences');
-  });
+  Route::get('/group/{id}', 'GroupController@show');
 
   Route::get('/create-group', function() {
     return view('create_group');
   });
   
-  Route::get('/group/{id}', 'GroupController@show');
-
   Route::middleware('Admin')->group(function() {
     Route::get('/admin', 'GroupController@index');
   });
