@@ -16,7 +16,7 @@ class StudentSeeder extends Seeder
         'cwid' => 20056533,
         'first_name' => 'Frank',
         'last_name' => 'Siderio',
-        'grad_year' => 2018,
+        'grad_year' => 2020,
       ]);
 
       Student::create([

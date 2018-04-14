@@ -12,8 +12,8 @@ class GradeSeeder extends Seeder
      */
     public function run()
     {
-      $grades = ['freshman', 'sophomore', 'junior', 'senior'];
-      $ranks = [1, 2, 3, 4];
+      $grades = ['freshman', 'sophomore', 'junior'];
+      $ranks = [3, 2, 1];
 
       for($i = 0; $i < count($grades); $i++) {
         Grade::create([

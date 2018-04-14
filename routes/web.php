@@ -10,8 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\Jobs\RequestMember;
-use Carbon\Carbon;
 
 Route::middleware('CasAuth')->group(function() {
   Route::get('/group/{id}', 'GroupController@show');
@@ -40,3 +38,7 @@ Route::get('/logout', function() {
 
 Route::post('/join/{id}/{cwid}', 'GroupController@addMember');
 Route::get('/decline/{id}/{cwid}', 'GroupController@declineMember');
+
+Route::get('/test', function() {
+  return App\Models\ResidenceArea::options();
+});

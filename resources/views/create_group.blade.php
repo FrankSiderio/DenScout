@@ -17,7 +17,7 @@
       <div class="input-group col m6 offset-m1">
         <label for="grade">Grade</label>
         <select name="grade" class="browser-default" required>
-          @foreach(App\Models\Grade::orderBy('rank', 'ASC')->get() as $grade)
+          @foreach(App\Models\Grade::orderBy('rank', 'DESC')->get() as $grade)
             <option value="{{ $grade->rank }}">{{ $grade->grade }}</option>
           @endforeach
         </select>
