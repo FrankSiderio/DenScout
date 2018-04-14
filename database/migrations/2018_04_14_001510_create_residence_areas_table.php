@@ -17,6 +17,7 @@ class CreateResidenceAreasTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('capacity');
+            $table->text('image_url');
             $table->timestamps();
         });
     }

@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::middleware('CasAuth')->group(function() {
+  Route::get('/test', function () {
+    return "Successfully authorized with Marist CAS";
+  });
+});
+
+Route::get('/logout', function () {
+  cas()->logout();
+  session()->flush();
+});
