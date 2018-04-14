@@ -15,6 +15,7 @@ class CreateGroupsTable extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('group_leader')->references('cwid')->on('students');
             $table->timestamps();
         });
     }

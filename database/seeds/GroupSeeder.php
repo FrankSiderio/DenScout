@@ -14,7 +14,9 @@ class GroupSeeder extends Seeder
      */
     public function run()
     {
-      $group = Group::create();
+      $group = Group::create([
+        'group_leader' => 20056533,
+      ]);
 
       $students = Student::all();
 
