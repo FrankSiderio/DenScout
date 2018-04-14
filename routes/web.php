@@ -11,6 +11,9 @@
 |
 */
 
+use App\Jobs\RequestMember;
+use Carbon\Carbon;
+
 Route::get('/', function () {
     return view('index');
 });
@@ -24,13 +27,24 @@ Route::middleware('CasAuth')->group(function() {
   Route::get('/create-group', function() {
     return view('create_group');
   });
+  
+  Route::get('/group/{id}', 'GroupController@show');
 
-  Route::get('/test', function () {
-    return "Successfully authorized with Marist CAS";
+  Route::middleware('Admin')->group(function() {
+    Route::get('/admin', 'GroupController@index');
   });
 });
 
-Route::get('/logout', function () {
+Route::get('/logout', function() {
   cas()->logout();
   session()->flush();
 });
+
+Route::get('/email', function() {
+  $job = (new RequestMember(20056533, 20097232))
+        ->delay(Carbon::now()->addSeconds(10));
+  dispatch($job);
+});
+
+Route::get('/join/{id}/{cwid}', 'GroupController@addMember');
+Route::get('/decline/{id}/{cwid}', 'GroupController@declineMember');

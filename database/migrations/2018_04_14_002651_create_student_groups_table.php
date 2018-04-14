@@ -16,6 +16,7 @@ class CreateStudentGroupsTable extends Migration
         Schema::create('student_groups', function (Blueprint $table) {
             $table->integer('cwid')->references('cwid')->on('students');
             $table->integer('group_id')->references('id')->on('groups');
+            $table->enum('status', ['leader', 'member', 'pending', 'denied']);
             $table->timestamps();
         });
     }

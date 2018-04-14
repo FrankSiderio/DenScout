@@ -14,17 +14,18 @@ class GroupSeeder extends Seeder
      */
     public function run()
     {
-      $group = Group::create([
-        'group_leader' => 20056533,
+      $group = Group::create();
+
+      StudentGroup::create([
+        'cwid' => 20056533,
+        'group_id' => $group->id,
+        'status' => 'leader',
       ]);
 
-      $students = Student::all();
-
-      foreach($students as $student) {
-        StudentGroup::create([
-          'cwid' => $student->cwid,
-          'group_id' => $group->id
-        ]);
-      }
+      StudentGroup::create([
+        'cwid' => 20073139,
+        'group_id' => $group->id,
+        'status' => 'member',
+      ]);
     }
 }
