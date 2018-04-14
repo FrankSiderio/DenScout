@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\StudentGroup;
 use App\Models\Group;
 
 class GroupController extends Controller
@@ -26,5 +27,19 @@ class GroupController extends Controller
     $group = Group::with('student', 'preference')->findOrFail($id);
 
     return compact('group');
+  }
+
+  /**
+   * Creates a group
+   * @return
+   */
+  public function create() {
+    $group = Group::create();
+
+    StudentGroup::create([
+      'cwid' => session('cwid'),
+      'group_id' => $group->id,
+      'status' => 'leader', // The person that creates the group will be the leader
+    ]);
   }
 }

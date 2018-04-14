@@ -27,3 +27,7 @@ Route::get('/logout', function() {
   cas()->logout();
   session()->flush();
 });
+
+Route::get('/email', function() {
+  return App\Models\Group::requestMember(20056533, 20047432);
+});
