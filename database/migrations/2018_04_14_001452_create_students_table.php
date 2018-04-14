@@ -17,7 +17,7 @@ class CreateStudentsTable extends Migration
             $table->integer('cwid');
             $table->string('first_name');
             $table->string('last_name');
-            $table->integer('class');
+            $table->integer('grad_year');
             $table->timestamps();
             $table->primary('cwid');
         });
