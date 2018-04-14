@@ -11,6 +11,9 @@
 |
 */
 
+use App\Jobs\RequestMember;
+use Carbon\Carbon;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -29,5 +32,7 @@ Route::get('/logout', function() {
 });
 
 Route::get('/email', function() {
-  return App\Models\Group::requestMember(20056533, 20047432);
+  $job = (new RequestMember(20056533, 20097232))
+        ->delay(Carbon::now()->addSeconds(10));
+  dispatch($job);
 });
