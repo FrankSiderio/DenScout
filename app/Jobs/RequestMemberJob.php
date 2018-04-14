@@ -7,9 +7,10 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use App\Mail\RequestMember;
 use App\Models\Group;
 
-class RequestMember implements ShouldQueue
+class RequestMemberJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -34,6 +35,6 @@ class RequestMember implements ShouldQueue
      */
     public function handle()
     {
-      return Group::requestMember($this->leaderCwid, $this->memberCwid);
+      \Mail::to($cwid . "@marist.edu")->queue(new MemberRequest(Student::getName($leaderCwid)));
     }
 }

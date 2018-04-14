@@ -3,6 +3,13 @@
 @section('content')
   <!-- Space for groups you're a part of. -->
   <div class="parent">
+    @if (session('error'))
+      <div class="col m12">
+        <div class="card-panel red">
+          <span class="white-text">{{ session('error') }}</span>
+        </div>
+      </div>
+    @endif
     @if(!(App\Models\Student::isInGroup(session('cwid'))))
       <div class="no-groups">
         <h3>Doesn't look like you're part of any groups.</h3>
@@ -48,4 +55,16 @@
     @endif
   </div>
 
+@endsection
+@section('js')
+  @if (session('message'))
+    <script>
+       M.toast({html: '{{ session("message") }}'})
+    </script>
+  @endif
+  @if (session('error'))
+    <script>
+       M.toast({html: '{{ session("error") }}'})
+    </script>
+  @endif
 @endsection
