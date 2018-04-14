@@ -8,7 +8,7 @@
       <a href="/create-group" class="btn-large red"><i class="material-icons left">group_add</i>Create a Group</a>
     </div>
     <div class="card-panel group-info">
-      <h4>Tom's Group</h4>
+      <h4 style="margin-top: 0">Tom's Group</h4>
 
       <h5>Members</h5>
       <table>
