@@ -14,13 +14,10 @@ class PreferenceSeeder extends Seeder
      */
     public function run()
     {
-      $group = Group::find(1);
-      $residence = ResidenceArea::where('name', 'Building A')->get()[0];
-
       Preference::create([
-        'residence_area_id' => $residence->id,
+        'residence_area_id' => 6,
         'rank' => 0,
-        'group_id' => $group->id,
+        'group_id' => 1,
       ]);
     }
 }

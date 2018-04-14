@@ -32,10 +32,18 @@
           </tbody>
         </table>
         <h5>Preferences</h5>
-        <span class="red-text no-preferences">Looks like you don't have your preferences configured.</span>
-        <br>
-        <br>
-        <a href="/preferences" class="btn red">Pick housing preferences</a>
+        @if(!App\Models\Group::hasPreferences(session('cwid')))
+          <span class="red-text no-preferences">Looks like you don't have your preferences configured.</span>
+          <br>
+          <br>
+          <a href="/preferences" class="btn red">Pick housing preferences</a>
+        @else
+          @foreach(App\Models\Group::getPreferences(session('cwid')) as $preference)
+            <p>Name: {{ $preference->residence->name }}</p>
+            <p>Capacity: {{ $preference->residence->capacity }}</p>
+            <p>Image: {{ $preference->residence->image_url }}</p>
+          @endforeach
+        @endif
       </div>
     @endif
   </div>

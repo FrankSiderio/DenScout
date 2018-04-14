@@ -24,7 +24,7 @@ Route::middleware('CasAuth')->group(function() {
   Route::get('/create-group', function() {
     return view('create_group');
   });
-  
+
   Route::middleware('Admin')->group(function() {
     Route::get('/admin', 'GroupController@index');
   });
