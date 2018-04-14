@@ -25,3 +25,16 @@
   min-width: 300px;
   text-align: left;
 }
+
+.recommendations-search {
+  display: flex;
+}
+
+.recommendations-search-field {
+  flex-basis: 90%;
+}
+
+.recommendations-search-button {
+  margin: auto;
+  flex-basis: 10%;
+}

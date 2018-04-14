@@ -35,6 +35,11 @@ Route::middleware('CasAuth')->group(function() {
   });
 });
 
+Route::get('/recommendations', function() {
+  return view('recommendations');
+});
+
+
 Route::get('/logout', function() {
   cas()->logout();
   session()->flush();
