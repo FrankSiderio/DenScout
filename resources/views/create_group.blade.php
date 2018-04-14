@@ -9,14 +9,14 @@
     <div class="row">
       <div class="input-group col m4">
         <label for="yourName">Your Name</label>
-        <input type="text" name="name"></input>
+        <input type="text" name="name" required></input>
       </div>
 
 
 
       <div class="input-group col m6 offset-m1">
         <label for="grade">Grade</label>
-        <select name="grade" class="browser-default">
+        <select name="grade" class="browser-default" required>
           @foreach(App\Models\Grade::orderBy('rank', 'ASC')->get() as $grade)
             <option value="{{ $grade->rank }}">{{ $grade->grade }}</option>
           @endforeach
@@ -44,4 +44,14 @@
 
 @section('js')
   <script src="/js/group.js"></script>
+  @if (session('message'))
+    <script>
+       M.toast({html: '{{ session("message") }}'})
+    </script>
+  @endif
+  @if (session('error'))
+    <script>
+       M.toast({html: '{{ session("error") }}'})
+    </script>
+  @endif
 @endsection

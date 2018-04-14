@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use App\Mail\RequestMember;
 use App\Models\Group;
+use App\Models\Student;
 
 class RequestMemberJob implements ShouldQueue
 {
@@ -16,16 +17,18 @@ class RequestMemberJob implements ShouldQueue
 
     protected $leaderCwid;
     protected $memberCwid;
+    protected $groupId;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($leaderCwid, $memberCwid)
+    public function __construct($leaderCwid, $memberCwid, $groupId)
     {
       $this->leaderCwid = $leaderCwid;
       $this->memberCwid = $memberCwid;
+      $this->groupId = $groupId;
     }
 
     /**
@@ -35,6 +38,6 @@ class RequestMemberJob implements ShouldQueue
      */
     public function handle()
     {
-      \Mail::to($cwid . "@marist.edu")->queue(new MemberRequest(Student::getName($leaderCwid)));
+      \Mail::to($this->memberCwid . "@marist.edu")->queue(new RequestMember(Student::getName($this->leaderCwid), $this->groupId, $this->memberCwid));
     }
 }
