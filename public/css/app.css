@@ -1,8 +1,9 @@
 .parent {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 20px;
   justify-items: center;
+  align-items: center;
   text-align: center;
 }
 
@@ -11,7 +12,8 @@
   height: 300px;
   display: flex;
   flex-direction: column;
-  align-items: space-between;
+  align-items: center;
+  justify-content: center;
 }
 
 .no-groups a {
@@ -19,8 +21,7 @@
   width: 50%;
 }
 
-.group-card {
-  padding: 32px;
-  border-radius: 10px;
-  width: 100%;
+.group-info {
+  min-width: 300px;
+  text-align: left;
 }
