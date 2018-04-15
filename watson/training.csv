@@ -4,19 +4,29 @@ Which dorms have a kitchen?,kitchen
 Kitchen?,kitchen
 Which dorms are accessible?,accessibility
 Which housing options are accessible?,accessibility
-What dorms are for me?,me
 What housing options are upperclassmen?,upperclassmen
-What residence areas are for me?,me
 What housing options are for underclassmen?,underclassmen
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
+Where can sophomores live?,underclassmen
+Where can juniors live?,upperclassmen
+Where can seniors live? ,upperclassmen
+What dorms can I cook in?,kitchen
+What dorms have kitchenettes?,kitchenette
+What are housing sophomore housing options?,underclassmen
+Sophomore housing options,underclassmen
+freshman housing options,underclassmen
+sophomore housing,underclassmen
+Where can I cook?,kitchen
+What housing options are handicap accessible?,accessibility
+Where are the handicap accessible dorms?,accessibility
+Where can freshman live?,underclassmen
+Where do upperclassman live?,upperclassmen
+Where do underclassman live?,underclassmen
+What residence areas are handicap accessible,accessibility
+Which residence areas have a kitchenette?,kitchenette
+What houses have kitchenettes?,kitchenette
+What residence areas acommondate disabled people?,accessibility
+What housing options accommodate persons with disablities? ,accessibility
+What housing options are available to people with disabilities?,accessibility
+Where can disabled people live?,accessibility
+Where do people with disabilities live?,accessibility
+What are senior year housing options?,upperclassmen

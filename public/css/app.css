@@ -109,3 +109,17 @@
   flex-direction: column;
   box-shadow: 1 1 1 1;
 }
+
+.recommendations-search {
+  margin: 50px;
+  display: flex;
+}
+
+.recommendations-search-field {
+  flex-basis: 90%;
+}
+
+.recommendations-search-button {
+  margin: auto;
+  flex-basis: 10%;
+}
