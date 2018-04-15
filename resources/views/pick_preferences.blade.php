@@ -3,7 +3,7 @@
 @section('content')
 
   @php
-  $residenceAreas = \App\Models\ResidenceArea::options();
+  $residenceAreas = \App\Models\ResidenceArea::all();
 @endphp
 
 <form method="POST"id="top-3" onsubmit="onSubPrefs(event)">

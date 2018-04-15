@@ -46,7 +46,7 @@ class Student extends Model
     $groupLeader = StudentGroup::where('group_id', $student[0]->group_id)->value('cwid');
 
     // Return the group leader
-    return Student::getFirstName($groupLeader);
+    return Student::where('cwid', $groupLeader)->first();
   }
 
   /**
