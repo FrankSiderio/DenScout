@@ -65,7 +65,7 @@ class Student extends Model
   /**
    * Returns if the given student is a group leader
    * @param  integer  $cwid
-   * @return boolean    
+   * @return boolean
    */
   public static function isLeader($cwid) {
     $student = StudentGroup::where('cwid', $cwid)->where('status', 'leader')->get();

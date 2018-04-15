@@ -28,9 +28,7 @@ Route::middleware('CasAuth')->group(function() {
     Route::get('/admin', 'GroupController@index');
   });
 
-  Route::get('/preferences', function() {
-    return view('pick_preferences');
-  });
+  Route::get('/preferences', 'PreferenceController@index');
 });
 
 Route::post('/group', 'GroupController@create');
@@ -46,5 +44,5 @@ Route::get('/decline/{id}/{cwid}', 'GroupController@declineMember');
 Route::post('/preferences', 'PreferenceController@create');
 
 Route::get('/test', function() {
-  return App\Models\Group::hasPreferences(session('cwid'));
+  return App\Models\ResidenceArea::options();
 });

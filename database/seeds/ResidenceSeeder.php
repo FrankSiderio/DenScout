@@ -24,10 +24,6 @@ class ResidenceSeeder extends Seeder
         'residence_area_id' => $residence->id,
         'grade' => 'Freshman',
       ]);
-      ResidenceGrade::create([
-        'residence_area_id' => $residence->id,
-        'grade' => 'Sophomore',
-      ]);
 
       $residence = ResidenceArea::create([
         'name' => 'Foy Townhouses',
@@ -36,7 +32,7 @@ class ResidenceSeeder extends Seeder
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
-        'grade' => 'Sophomore',
+        'grade' => 'Freshman',
       ]);
 
       $residence = ResidenceArea::create([
@@ -46,7 +42,7 @@ class ResidenceSeeder extends Seeder
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
-        'grade' => 'Sophomore',
+        'grade' => 'Freshman',
       ]);
 
       $residence = ResidenceArea::create([
@@ -56,7 +52,7 @@ class ResidenceSeeder extends Seeder
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
-        'grade' => 'Sophomore',
+        'grade' => 'Freshman',
       ]);
       $residence = ResidenceArea::create([
         'name' => 'Upper West Cedar St Townhouses',
@@ -65,7 +61,7 @@ class ResidenceSeeder extends Seeder
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
-        'grade' => 'Sophomore',
+        'grade' => 'Freshman',
       ]);
       // End underclassmen
 
@@ -81,7 +77,7 @@ class ResidenceSeeder extends Seeder
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
-        'grade' => 'Senior',
+        'grade' => 'Sophomore',
       ]);
 
       $residence = ResidenceArea::create([
@@ -95,7 +91,7 @@ class ResidenceSeeder extends Seeder
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
-        'grade' => 'Senior',
+        'grade' => 'Sophomore',
       ]);
 
       $residence = ResidenceArea::create([
@@ -109,7 +105,7 @@ class ResidenceSeeder extends Seeder
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
-        'grade' => 'Senior',
+        'grade' => 'Sophomore',
       ]);
 
       $residence = ResidenceArea::create([
@@ -123,7 +119,7 @@ class ResidenceSeeder extends Seeder
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
-        'grade' => 'Senior',
+        'grade' => 'Sophomore',
       ]);
 
       $residence = ResidenceArea::create([
@@ -137,7 +133,7 @@ class ResidenceSeeder extends Seeder
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
-        'grade' => 'Senior',
+        'grade' => 'Sophomore',
       ]);
 
       $residence = ResidenceArea::create([
@@ -151,7 +147,7 @@ class ResidenceSeeder extends Seeder
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
-        'grade' => 'Senior',
+        'grade' => 'Sophomore',
       ]);
 
       $residence = ResidenceArea::create([
@@ -165,7 +161,7 @@ class ResidenceSeeder extends Seeder
       ]);
       ResidenceGrade::create([
         'residence_area_id' => $residence->id,
-        'grade' => 'Senior',
+        'grade' => 'Sophomore',
       ]);
       // End uperclassmen
 

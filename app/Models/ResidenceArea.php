@@ -15,7 +15,7 @@ class ResidenceArea extends Model
 
   public static function options() {
     // Get the current students grade
-    $gradYear = Student::find(session('cwid'))->value('grad_year');
+    $gradYear = Student::find(session('cwid'))->grad_year;
     $grade = Grade::where('rank', $gradYear - Carbon::now()->year)->value('grade');
 
     // Return all the residence areas associated with that grade
