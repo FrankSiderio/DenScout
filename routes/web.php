@@ -46,3 +46,7 @@ Route::post('/preferences', 'PreferenceController@create');
 Route::get('/test', function() {
   return App\Models\ResidenceArea::options();
 });
+
+Route::get('/recommendations', function() {
+  return view('recommendations');
+});

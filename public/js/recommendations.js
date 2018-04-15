@@ -1,33 +1,34 @@
 // Call the Watson GET API to return a keyword based on entered question
-function classifyText() {
-    // SAMPLE REQUEST! REAL ONE WILL BE DYNAMIC 
-// curl -G --user "997e27c4-b5e4-443d-9018-a8748614e264":"g0veY0ndetkE" "https://gateway.watsonplatform.net/natural-languae-classifier/api/v1/classifiers/ab2c7bx342-nlc-652/classify" --data-urlencode "text=Where do seniors live?"
+function classifyText(elem) {
+  // SAMPLE REQUEST! REAL ONE WILL BE DYNAMIC
+  // curl -G --user "997e27c4-b5e4-443d-9018-a8748614e264":"g0veY0ndetkE" "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/ab2c7bx342-nlc-652/classify" --data-urlencode "text=Where do seniors live?"
 
+  const data = {text: "Where do seniors live?"};
 
-const myRequest = new Request('https://gateway.watsonplatform.net/natural-languae-classifier/api/v1/classifiers/ab2c7bx342-nlc-652/classify');
+  const myHeaders = new Headers();
 
-const myURL = myRequest.url; // http://localhost/flowers.jpg
-const myMethod = myRequest.method; // GET
-const myCred = myRequest.credentials; // omit
+  myHeaders.append(
+    'Authorization',
+     'AuthorizationBasic OTk3ZTI3YzQtYjVlNC00NDNkLTkwMTgtYTg3NDg2MTRlMjY0OmcwdmVZMG5kZXRrRQ=='
+   );
+  myHeaders.append('content-type', 'application/json');
 
-var myHeaders = new Headers();
+  const myRequest = new Request('https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/ab2f65x344-nlc-639/classify?' + encodeQueryData(data),
+  {
+    method: 'GET',
+    headers: myHeaders,
+  });
 
-myHeaders.append('username', '997e27c4-b5e4-443d-9018-a8748614e264');
-myHeaders.append('password','g0veY0ndetkE');
-
-// hard code for test
-var data = "Where do seniors live?";
-// Non hard code for real
-// var data = $("#question").val();
-
-
-// Enjoy deleting this shitty non working code in exchange for big normal code
-fetch(myURL, {
-    method: 'POST', // or 'PUT'
-    body: JSON.stringify(data), // data can be `string` or {object}!
-    headers: myHeaders
-  }).then(res => res.json())
+  fetch(myRequest)
+  .then(res => res.json())
   .catch(error => console.error('Error:', error))
   .then(response => console.log('Success:', response));
 
+}
+
+function encodeQueryData(data) {
+   let ret = [];
+   for (let d in data)
+     ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
+   return ret.join('&');
 }
