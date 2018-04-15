@@ -83,3 +83,29 @@
   align-items: center;
   justify-items: center;
 }
+
+.pref-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 48px;
+  min-width: 400px;
+  justify-items: center;
+  align-items: center;
+}
+
+.pref-container p {
+  text-align: left;
+}
+
+.pref-container .bottom {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pref-duo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 1 1 1 1;
+}

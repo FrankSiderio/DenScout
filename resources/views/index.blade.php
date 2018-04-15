@@ -17,15 +17,15 @@
       </div>
     @else
       <div class="card-panel group-info">
-        <h4>{{ App\Models\Student::getGroupLeader(session('cwid')) }}'s Group</h4>
+        <h4>{{ App\Models\Student::getGroupLeader(session('cwid'))->first_name }}'s Group</h4>
 
         <h5>Members</h5>
         <table>
           <thead>
             <tr>
-                <th>Name</th>
-                <th>CWID</th>
-                <th>Status</th>
+              <th>Name</th>
+              <th>CWID</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
@@ -38,20 +38,35 @@
             @endforeach
           </tbody>
         </table>
-        <h5>Preferences</h5>
+        <h5 style="margin-top: 48px; margin-bottom: 16px">Preferences</h5>
         @if(!App\Models\Group::hasPreferences(session('cwid')))
-          <span class="red-text no-preferences">Looks like you don't have your preferences configured.</span>
-          <br>
-          <br>
           @if(App\Models\Student::isLeader(session('cwid')))
+            <span class="red-text no-preferences">Looks like you don't have your preferences configured.</span>
+            <br>
+            <br>
             <a href="/preferences" class="btn red">Pick housing preferences</a>
+          @else
+          <span class="red-text no-preferences">Looks like you don't have your preferences configured.
+            <a href="mailto:{{ App\Models\Student::getGroupLeader(session('cwid'))->cwid }}@marist.edu">Contact your group leader</a>
+            <br>
+          </span>
           @endif
+
         @else
-          @foreach(App\Models\Group::getPreferences(session('cwid')) as $preference)
-            <p>Name: {{ $preference->residence->name }}</p>
-            <p>Capacity: {{ $preference->residence->capacity }}</p>
-            <p>Image: {{ $preference->residence->image_url }}</p>
-          @endforeach
+          <div class="pref-container">
+            @foreach(App\Models\Group::getPreferences(session('cwid')) as $preference)
+              <div class="pref-duo">
+                <h2 style="margin: 0">{{ $preference->rank + 1 }}</h2>
+                <div id="{{ $preference->residence->name }}" class="card-panel ra-card">
+                  <img draggable="false" src="{{ $preference->residence->image_url }}">
+                  <div class="bottom">
+                    <p>{{ $preference->residence->name }}</p>
+                    {{-- <p class="grey-text text-darken-2">{{ $preference->residence->capacity }}</p> --}}
+                  </div>
+                </div>
+              </div>
+            @endforeach
+          </div>
         @endif
       </div>
     @endif
@@ -61,12 +76,12 @@
 @section('js')
   @if (session('message'))
     <script>
-       M.toast({html: '{{ session("message") }}'})
+    M.toast({html: '{{ session("message") }}'})
     </script>
   @endif
   @if (session('error'))
     <script>
-       M.toast({html: '{{ session("error") }}'})
+    M.toast({html: '{{ session("error") }}'})
     </script>
   @endif
 @endsection
