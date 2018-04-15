@@ -74,26 +74,27 @@ class GroupController extends Controller
       'status' => 'leader', // The person that creates the group will be the leader
     ]);
 
-    // Invite all the requested students
-    foreach($request->member as $member) {
-      if($member != null) {
+    if(isset($request->member)) {
+      // Invite all the requested students
+      foreach($request->member as $member) {
+        if($member != null) {
 
-        Student::create([
-          'cwid' => $member,
-        ]);
+          Student::create([
+            'cwid' => $member,
+          ]);
 
-        StudentGroup::create([
-          'cwid' => $member,
-          'group_id' => $group->id,
-          'status' => 'pending',
-        ]);
+          StudentGroup::create([
+            'cwid' => $member,
+            'group_id' => $group->id,
+            'status' => 'pending',
+          ]);
 
-        $job = (new RequestMemberJob(session('cwid'), $member, $group->id))
-              ->delay(Carbon::now()->addSeconds(5));
-        dispatch($job);
+          $job = (new RequestMemberJob(session('cwid'), $member, $group->id))
+                ->delay(Carbon::now()->addSeconds(5));
+          dispatch($job);
+        }
       }
     }
-
 
     session()->flash('message', 'Your group has been created!');
 

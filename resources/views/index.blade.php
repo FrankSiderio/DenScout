@@ -43,7 +43,9 @@
           <span class="red-text no-preferences">Looks like you don't have your preferences configured.</span>
           <br>
           <br>
-          <a href="/preferences" class="btn red">Pick housing preferences</a>
+          @if(App\Models\Student::isLeader(session('cwid')))
+            <a href="/preferences" class="btn red">Pick housing preferences</a>
+          @endif
         @else
           @foreach(App\Models\Group::getPreferences(session('cwid')) as $preference)
             <p>Name: {{ $preference->residence->name }}</p>

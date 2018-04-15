@@ -43,6 +43,8 @@ Route::get('/logout', function() {
 Route::post('/join/{id}/{cwid}', 'GroupController@addMember');
 Route::get('/decline/{id}/{cwid}', 'GroupController@declineMember');
 
+Route::post('/preferences', 'PreferenceController@create');
+
 Route::get('/test', function() {
-  return App\Models\ResidenceArea::options();
+  return App\Models\Group::hasPreferences(session('cwid'));
 });

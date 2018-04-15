@@ -3,7 +3,7 @@
 @section('content')
 
   @php
-  $residenceAreas = \App\Models\ResidenceArea::all();
+  $residenceAreas = \App\Models\ResidenceArea::options();
 @endphp
 
 <form method="POST"id="top-3" onsubmit="onSubPrefs(event)">
@@ -43,7 +43,7 @@
 
       <div class="card-panel ra" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
         @foreach ($residenceAreas as $ra)
-          <div id="{{ $ra->name }}" onclick="touchDeviceSelect(this)" draggable="true" ondragstart="dragstart_handler(event);" class="card-panel ra-card">
+          <div id="{{ $ra->id }}" onclick="touchDeviceSelect(this)" draggable="true" ondragstart="dragstart_handler(event);" class="card-panel ra-card">
             <img draggable="false" src="{{ $ra->image_url }}">
             <p>{{ $ra->name }}</p>
           </div>

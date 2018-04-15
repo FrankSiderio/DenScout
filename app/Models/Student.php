@@ -8,7 +8,7 @@ use App\Models\StudentGroup;
 class Student extends Model
 {
   public $primaryKey = "cwid";
-  protected $fillable = ['cwid', 'first_name', 'last_name', 'grade'];
+  protected $fillable = ['cwid', 'first_name', 'last_name', 'grad_year'];
 
   public static function getFirstName($cwid) {
     $student = Student::findOrFail($cwid);
@@ -60,5 +60,16 @@ class Student extends Model
 
     // Then with the group id get all the active members in the group
     return StudentGroup::with('student')->where('group_id', $groupId)->get();
+  }
+
+  /**
+   * Returns if the given student is a group leader
+   * @param  integer  $cwid
+   * @return boolean    
+   */
+  public static function isLeader($cwid) {
+    $student = StudentGroup::where('cwid', $cwid)->where('status', 'leader')->get();
+
+    return $student->count() > 0;
   }
 }

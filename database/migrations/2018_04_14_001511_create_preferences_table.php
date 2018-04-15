@@ -17,7 +17,7 @@ class CreatePreferencesTable extends Migration
             $table->increments('id');
             $table->integer('residence_area_id')->references('id')->on('residence_areas');
             $table->integer('rank');
-            $table->integer('group_id')->references('id')->on('groups');
+            $table->integer('group_id')->references('id')->on('groups')->default(0);
             $table->timestamps();
         });
     }
