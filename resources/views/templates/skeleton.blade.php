@@ -24,26 +24,20 @@
           <i style="font-size: 100%" class="material-icons left">explore</i>
           DenScout
         </a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="#">Navbar Link</a></li>
-        </ul>
-
-        <ul id="nav-mobile" class="sidenav">
-          <li><a href="#">Navbar Link</a></li>
-        </ul>
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container" style="min-height: 100%">
     @yield('content')
     </div>
 
     <br>
     <br>
 
-    <footer class="page-footer red">
+    <footer class="page-footer red" style="position: fixed; left:0; bottom:0; width:100%;">
       <div class="footer-copyright">
+
         <div class="container">
         Made by <a class="red-text text-lighten-3" href="http://sga.marist.edu/404">Franky and da boyz</a>
         </div>

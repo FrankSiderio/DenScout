@@ -1378,7 +1378,7 @@
                 "laravel 5",
                 "phpCAS"
             ],
-            "time": "2018-01-31 23:46:35"
+            "time": "2018-01-31T23:46:35+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
